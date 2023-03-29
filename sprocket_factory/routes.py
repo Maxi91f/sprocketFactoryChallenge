@@ -41,7 +41,7 @@ def get_production(factory_id):
     """
     production = Production.query.filter_by(factory_id=factory_id).all()
     if not production:
-        return jsonify({'error': 'No production found for factory_id=1'}), 404
+        return jsonify({'error': f'No production found for factory_id={factory_id}'}), 404
     return jsonify([{"sprocket_production_actual":p.sprocket_production_actual,
                     "sprocket_production_goal":p.sprocket_production_goal,
                     "time":p.time.isoformat(),
@@ -80,7 +80,9 @@ def get_sprocket(sprocket_id):
     Returns:
         json: A dictionary containing the sprocket data for the given id
     """
-    sprocket = Sprocket.query.get_or_404(sprocket_id)
+    sprocket = Sprocket.query.filter_by(id=sprocket_id).first()
+    if not sprocket:
+        return jsonify({'error': f'No sprocket found for id={sprocket_id}'}), 404
     return jsonify({
         'id': sprocket.id,
         'teeth': sprocket.teeth,
@@ -132,7 +134,7 @@ def update_sprocket(sprocket_id):
     Returns:
         json: A dictionary containing the sprocket data for the given id
     """
-    sprocket = Sprocket.query.get_or_404(sprocket_id)
+    sprocket = Sprocket.query.filter_by(id=sprocket_id).first()
     data = request.get_json()
     sprocket.teeth = data['teeth']
     sprocket.pitch_diameter = data['pitch_diameter']

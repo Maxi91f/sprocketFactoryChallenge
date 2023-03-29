@@ -75,7 +75,17 @@ Optional:
     ```
 
 ## Testing
-TODO
+The application has a few tests. To run them, simply execute the following command:
+```
+python -m pytest
+```
+
+To run the tests with coverage, execute the following command:
+```
+python -m pytest --cov
+```
+
+
 
 ## FAQ
 ### Why Flask?
@@ -107,11 +117,14 @@ Creating such a system would require many things, such as a broker system, a dep
 
 In this proyect, with no mandatory commit policy, no issue tracker, no backlog, etc... I decided to commit as I go, and to keep the commits as small as possible but significant. This way, it is easier to track the changes and to revert them if necessary. I also tried to keep the commit messages as descriptive as possible. Also, as I write this, I regret that I did not use any branching strategy, I should have used a dev branch, and a branch and merge for every feature. But well, there are so little amount of commits that it is not really a problem hard to solve from now on.
 
+### Testing
+
+I did small tests, only to test all the endpoints. It gives a good coverage, but the test are only happy path, with no error handling. I would like to add more tests, but I ran out of time.
+
 ## TODO
 
 Given the limited time and scope of this project, there are many things that could be improved. Some of them are:
 
-- Tests: Unit tests, integration tests, etc...
 - loggers: Log everything, with different levels 
 - metrics: metrics to monitor the application (e.g.: prometheus)
 - authentication: some standard auth system for the endpoints with different roles

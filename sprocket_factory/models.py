@@ -11,8 +11,6 @@ db = SQLAlchemy()
 class Factory(db.Model):
     """
     This class is a ORM model for the factories table.
-
-    It has a one to one relationship with the production table.
     """
     __tablename__ = 'factories'
     id = db.Column(db.Integer, primary_key=True)
