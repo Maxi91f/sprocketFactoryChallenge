@@ -6,7 +6,7 @@ from flask import Blueprint, jsonify, request
 from .models import Sprocket, Production
 from .models import db
 
-bp = Blueprint("factories", __name__, url_prefix="/v1/sprocket")
+bp = Blueprint("factories", __name__, url_prefix="/sprocketFactory/v1")
 
 # Endpoint to return all sprocket factory data
 @bp.route('/production', methods=['GET'])
